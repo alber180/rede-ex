@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Óscar Núñez Aguado <aguado@edu.xunta.es>
+ * @author Ã“scar NÃºÃ±ez Aguado <aguado@edu.xunta.es>
  */
 public class RedeTest {
 
@@ -19,13 +19,16 @@ public class RedeTest {
         assertTrue(Rede.validarIP("255.255.255.255"));
         assertTrue(Rede.validarIP("0.0.0.0"));
 
+        assertFalse(Rede.validarIP(""));
         assertFalse(Rede.validarIP("..."));
         assertFalse(Rede.validarIP("192.168..9"));
         assertFalse(Rede.validarIP("192.168:0.9"));
+        assertFalse(Rede.validarIP("192.16x.0.9"));
         assertFalse(Rede.validarIP("192.168.0.009"));
         assertFalse(Rede.validarIP("192.168.0.9."));
+        assertFalse(Rede.validarIP(".192.168.0.9"));
         assertFalse(Rede.validarIP("256.0.0.0"));
-        assertFalse(Rede.validarIP("255.0.0.0"));
+        assertFalse(Rede.validarIP("255.256.0.0"));
     }
 
     @Test
