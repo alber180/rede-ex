@@ -47,4 +47,15 @@ public class RedeTest {
         assertEquals(Rede.buscarIP("0.0.0.0", vacio), -1);
     }
 
+    @Test
+    public void validarMac() {
+        assertTrue(Rede.validarMac("5C260A242A60"));
+        assertTrue(Rede.validarMac("5C:26:0A:24:2A:60"));
+        assertTrue(Rede.validarMac("5C-26-0A-24-2A-60"));
+        assertTrue(Rede.validarMac("5C26.0A24.2A60"));
+        assertFalse(Rede.validarMac("5C260A242A6G"));
+        assertFalse(Rede.validarMac("5C:26:0A:24:2A.60"));
+        assertFalse(Rede.validarMac("5C-26-0A-24-2A-609"));
+        assertFalse(Rede.validarMac("5C26.0A24..2A60"));      
+    }
 }
